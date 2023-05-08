@@ -5,7 +5,7 @@ from manim import Scene
 class EPRQuotes(Scene):
     def construct(self):
 
-        title = ma.Title("EPR Paper").set_color(ma.BLUE)
+        title = ma.Title("EPR's Paper").set_color(ma.BLUE)
         self.add(title)
 
         criterion_of_reality = ma.Text(
@@ -16,9 +16,8 @@ then there exists an element of physical reality corresponding to this physical 
         ).scale(0.5)
 
         self.play(ma.Write(criterion_of_reality))
+        self.next_section()
         self.play(ma.FadeOut(criterion_of_reality))
-
-        self.wait()
 
         fund_concept = ma.Tex(
             r"""The fundamental concept of the theory is the concept of \textit{state}"""
@@ -26,31 +25,37 @@ then there exists an element of physical reality corresponding to this physical 
 
         self.play(ma.Write(fund_concept))
 
-        self.wait()
+        self.next_section()
         self.play(fund_concept.animate.move_to(title.get_bottom() * 0.8).scale(0.7))
 
         observable = ma.MathTex(r"\psi' \equiv A \psi = a\psi")
         self.play(ma.Create(observable))
         self.play(observable.animate.next_to(fund_concept, ma.DOWN).shift(5 * ma.LEFT))
 
+        self.next_section()
+
         define_psi = ma.MathTex(r"\psi = e^{(i/\hbar)p_0 x}").next_to(
             observable, buff=1
         )
         self.play(ma.Create(define_psi))
 
+        self.next_section()
+
         p_operator = ma.MathTex(r"p = -\hbar i \frac{\partial}{\partial x}")
         self.play(ma.Create(p_operator))
+
+        self.next_section()
 
         p_on_psi = ma.MathTex(
             r"\psi' = p \psi =-\hbar i \frac{\partial \psi}{\partial x} =", r"p_0 \psi"
         ).next_to(p_operator, ma.DOWN)
         self.play(ma.Create(p_on_psi))
 
-        self.wait()
+        self.next_section()
         self.play(ma.Create(ma.SurroundingRectangle(define_psi)))
         self.play(ma.Create(ma.SurroundingRectangle(p_on_psi[-1])))
 
-        self.wait()
+        self.next_section()
 
         conc_bullet = (
             ma.BulletedList(
@@ -68,10 +73,10 @@ then there exists an element of physical reality corresponding to this physical 
         )
 
         self.play(ma.Write(conc_bullet[0]))
-        self.wait()
+        self.next_section()
         self.play(ma.Write(conc_bullet[1]))
         self.play(ma.Write(conc_bullet[2]))
-        self.wait()
+        self.next_section()
 
         # fade out all except title
         to_be_fade_out = {*self.mobjects} - {title}
@@ -79,7 +84,7 @@ then there exists an element of physical reality corresponding to this physical 
 
         x_on_psi = ma.MathTex(r"q \psi = x\psi", "=", r"a \psi")
         self.play(ma.Write(x_on_psi))
-        self.wait()
+        self.next_section()
         self.play(ma.Transform(x_on_psi[1], ma.MathTex(r"\ne").next_to(x_on_psi[0])))
 
         self.play(x_on_psi.animate.next_to(title, ma.DOWN))
@@ -92,10 +97,10 @@ then there exists an element of physical reality corresponding to this physical 
             .scale(0.7)
         )
         self.play(ma.Create(prob_of_x[0]))
-        self.wait()
+        self.next_section()
         self.play(ma.Create(prob_of_x[1]))
 
-        self.wait()
+        self.next_section()
 
         conc_position = (
             ma.BulletedList(
@@ -108,11 +113,11 @@ then there exists an element of physical reality corresponding to this physical 
         )
 
         self.play(ma.Write(conc_position[0]))
-        self.wait()
+        self.next_section()
         self.play(ma.Write(conc_position[1]))
-        self.wait()
+        self.next_section()
         self.play(ma.Write(conc_position[2]))
-        self.wait()
+        self.next_section()
 
         # fade out all except title
         to_be_fade_out = {*self.mobjects} - {title}
@@ -135,6 +140,6 @@ then there exists an element of physical reality corresponding to this physical 
             .set_color(ma.YELLOW)
         )
         self.play(ma.Write(EPR_result.submobjects[0]))
-        self.wait()
+        self.next_section()
         self.play(ma.Write(EPR_result.submobjects[1]))
-        self.wait()
+        self.next_section()
