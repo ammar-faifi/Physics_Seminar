@@ -1,6 +1,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/macos,emacs,python,jupyternotebooks
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,emacs,python,jupyternotebooks
 
+
+# manim lib
+media/
+
 ### Emacs ###
 # -*- mode: gitignore; -*-
 *~
