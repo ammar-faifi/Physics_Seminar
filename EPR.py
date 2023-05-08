@@ -84,11 +84,57 @@ then there exists an element of physical reality corresponding to this physical 
 
         self.play(x_on_psi.animate.next_to(title, ma.DOWN))
 
-        prob_of_x = ma.MathTex(
-            r"P(a, b)", r"= \int_a^b \bar{\psi}\psi\, dx = \int_a^b dx = b-a"
-        ).next_to(x_on_psi, ma.DOWN)
+        prob_of_x = (
+            ma.MathTex(
+                r"P(a, b)", r"= \int_a^b \bar{\psi}\psi\, dx = \int_a^b dx = b-a"
+            )
+            .next_to(x_on_psi, ma.DOWN)
+            .scale(0.7)
+        )
         self.play(ma.Create(prob_of_x[0]))
         self.wait()
         self.play(ma.Create(prob_of_x[1]))
 
+        self.wait()
+
+        conc_position = (
+            ma.BulletedList(
+                "We see all values of the coordinte are equally probable.",
+                "A definite value of the coordinate, for a particle in the this state is not predictable.",
+                "For incompatible observables, the knowledge of one of them prevents the knowledge of the other one",
+            )
+            .scale(0.7)
+            .next_to(prob_of_x, ma.DOWN)
+        )
+
+        self.play(ma.Write(conc_position[0]))
+        self.wait()
+        self.play(ma.Write(conc_position[1]))
+        self.wait()
+        self.play(ma.Write(conc_position[2]))
+        self.wait()
+
+        # fade out all except title
+        to_be_fade_out = {*self.mobjects} - {title}
+        self.play(ma.FadeOut(*to_be_fade_out))
+
+        EPR_result = (
+            ma.VGroup(
+                ma.Text(
+                    "1. The quantum-mechanical description of reality given by the wave function is not compelete, or",
+                    slant=ma.ITALIC,
+                ),
+                ma.Text(
+                    "2. when the operators corresponding to two physical quantities do not commute\n"
+                    "    the two quantifies cannot have simultaneous reality.",
+                    slant=ma.ITALIC,
+                ),
+            )
+            .arrange(ma.DOWN, 2, aligned_edge=ma.LEFT)
+            .scale(0.5)
+            .set_color(ma.YELLOW)
+        )
+        self.play(ma.Write(EPR_result.submobjects[0]))
+        self.wait()
+        self.play(ma.Write(EPR_result.submobjects[1]))
         self.wait()
