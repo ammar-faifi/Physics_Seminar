@@ -1,6 +1,8 @@
 import manim as ma
 from manim import Scene, config
 
+config.background_color = ma.DARKER_GRAY
+
 
 class EPRQuotes(Scene):
     def construct(self):
@@ -143,9 +145,6 @@ then there exists an element of physical reality corresponding to this physical 
         self.next_section()
         self.play(ma.Write(EPR_result.submobjects[1]))
         self.next_section()
-
-
-config.background_color = ma.DARKER_GRAY
 
 
 class EPRExperiment(Scene):
